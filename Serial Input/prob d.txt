@@ -1,0 +1,34 @@
+int i, j, n = 10, sum = 0, tsum;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+}
+
+void loop()
+{
+    
+    for (i = 1; i <= n; i++) 
+	{
+        tsum = 0;
+        for (j = 1; j <= i; j++) 
+		{
+            sum += j;
+            tsum += j;
+            Serial.print(j) ;
+            if (j < i) 
+			{
+                Serial.print("+");
+            }
+        }
+        Serial.print("=");
+        Serial.println(tsum);
+    }
+	digitalWrite(10, HIGH);
+  	digitalWrite(11, HIGH);
+  	digitalWrite(12, HIGH);
+  	while(true){}
+
+}

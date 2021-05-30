@@ -1,0 +1,55 @@
+int value, result;
+float Function;
+
+
+void setup()
+{
+  Serial.begin(9600);
+  
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(10, LOW);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+  Serial.print("Enter the value of x: ");
+  while(Serial.available() == 0){}
+  value = Serial.parseInt();
+  Serial.println (value);
+  
+  if (value >= 0){
+    Function = (value*value) + sqrt(value);
+    Serial.print ("x = ");
+    Serial.println (Function);
+    digitalWrite(12, HIGH);
+  }
+  else if (value > -10 && value < 0){
+    Function = 1 - exp(value);
+    Serial.print ("x = ");
+    Serial.println (Function);
+    digitalWrite(11, HIGH);
+  }
+  else if (value <= -10){
+    Function = abs(value + 5);
+    Serial.print ("x = ");
+    Serial.println (Function);
+    digitalWrite(10, HIGH);
+  }
+  
+  Serial.println ("------------------");
+  Serial.println("Want to try again? 0 for Yes and 1 for No");
+  while (Serial.available() == 0){}
+
+
+  int x = Serial.parseInt();
+  Serial.println ("------------------");
+  if (x == 1) {
+    Serial.println("Goodbye!");
+    while (true) {}
+
+  } 
+}

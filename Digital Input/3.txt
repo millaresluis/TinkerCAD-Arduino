@@ -1,0 +1,841 @@
+int buttonState1 = 0;
+int buttonState2 = 0;
+int buttonState3 = 0;
+int buttonState4 = 0;
+
+int lastButtonState1 = 0;
+int lastButtonState2 = 0;
+int lastButtonState3 = 0;
+int lastButtonState4 = 0;
+
+
+
+void setup () {
+  
+  //led output
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  
+  //input
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+  
+  
+}
+
+
+
+void loop () {
+  
+  buttonState1 = digitalRead(2);
+  buttonState2 = digitalRead(3);
+  buttonState3 = digitalRead(4);
+  buttonState4 = digitalRead(5);
+  
+  
+  //0001 
+  if (buttonState1 == LOW && buttonState2 == LOW && buttonState3 == LOW && buttonState4 == HIGH) {
+    digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  } 
+  //0010
+  else if (buttonState1 == LOW && buttonState2 == LOW && buttonState3 == HIGH && buttonState4 == LOW) {
+	//1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  }
+  //0011
+  else if (buttonState1 == LOW && buttonState2 == LOW && buttonState3 == HIGH && buttonState4 == HIGH){
+  	digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  }
+  //0100
+  else if (buttonState1 == LOW && buttonState2 == HIGH && buttonState3 == LOW && buttonState4 == LOW){
+  	//1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  }
+  //0101
+  else if (buttonState1 == LOW && buttonState2 == HIGH && buttonState3 == LOW && buttonState4 == HIGH){
+  	digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  }
+  //0110
+  else if (buttonState1 == LOW && buttonState2 == HIGH && buttonState3 == HIGH && buttonState4 == LOW){
+  	//1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  } 
+  //0111
+  else if (buttonState1 == LOW && buttonState2 == HIGH && buttonState3 == HIGH && buttonState4 == HIGH){
+  	digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    digitalWrite(8, HIGH);
+    delay(1000);
+    digitalWrite(6, LOW);
+    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
+  }
+  //1000
+  else if (buttonState1 == HIGH && buttonState2 == LOW && buttonState3 == LOW && buttonState4 == LOW){
+  	//1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  } 
+  //1001
+  else if (buttonState1 == HIGH && buttonState2 == LOW && buttonState3 == LOW && buttonState4 == HIGH){
+  	digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  } 
+  //1010
+  else if (buttonState1 == HIGH && buttonState2 == LOW && buttonState3 == HIGH && buttonState4 == LOW){
+    //1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  } 
+  //1011
+  else if (buttonState1 == HIGH && buttonState2 == LOW && buttonState3 == HIGH && buttonState4 == HIGH){
+  	digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  } 
+  //1100
+  else if (buttonState1 == HIGH && buttonState2 == HIGH && buttonState3 == HIGH && buttonState4 == LOW){
+  	//1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  } 
+  //1101
+  else if (buttonState1 == HIGH && buttonState2 == HIGH && buttonState3 == LOW && buttonState4 == HIGH){
+    digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  } 
+  //1110
+  else if (buttonState1 == HIGH && buttonState2 == HIGH && buttonState3 == HIGH && buttonState4 == LOW){
+  	//1st wave
+    digitalWrite(6, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    
+    
+    //2nd wave
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    
+    
+    //3rd wave
+    delay(500);
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(12, HIGH);
+    delay(500);
+    digitalWrite(11, HIGH);
+    delay(500);
+    digitalWrite(10, HIGH);
+    delay(500);
+    digitalWrite(9, HIGH);
+    delay(500);
+    digitalWrite(8, HIGH);
+    delay(500);
+    digitalWrite(7, HIGH);
+    delay(500);
+    digitalWrite(6, HIGH);
+    delay(500);
+    
+    //4th wave
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(6, LOW);
+    delay(500);
+  } 
+  //1111
+  else if (buttonState1 == HIGH && buttonState2 == HIGH && buttonState3 == HIGH && buttonState4 == HIGH){
+  	digitalWrite(13, HIGH);
+    
+    digitalWrite(12, HIGH);
+    
+    digitalWrite(11, HIGH);
+    
+    digitalWrite(10, HIGH);
+    
+    digitalWrite(9, HIGH);
+    
+    digitalWrite(8, HIGH);
+    
+    digitalWrite(7, HIGH);
+    
+    digitalWrite(6, HIGH);
+    delay(2000);
+    digitalWrite(6, LOW);
+    delay(500);
+    digitalWrite(7, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    delay(500);
+    digitalWrite(9, LOW);
+    delay(500);
+    digitalWrite(10, LOW);
+    delay(500);
+    digitalWrite(11, LOW);
+    delay(500);
+    digitalWrite(12, LOW);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+  }  
+    
+    
+  
+}

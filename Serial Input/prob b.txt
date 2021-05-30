@@ -1,0 +1,90 @@
+int b,c,i,x;
+char junk = ' ';
+
+
+void setup () {
+	Serial.begin(9600);
+	pinMode(12, OUTPUT);
+    pinMode(11, OUTPUT);
+    pinMode(10, OUTPUT);
+}
+
+
+void loop () {
+  	digitalWrite(10, LOW);
+  	digitalWrite(11, LOW);
+  	digitalWrite(12, LOW);
+  	Serial.println("Enter start num");
+  	
+  	while (Serial.available() == 0); {
+    	b = Serial.parseInt();
+      	Serial.print ("start: ");
+      	Serial.println(b);
+     	while (Serial.available() > 0) {
+       		junk = Serial.read();
+     	}
+      	if (b == 0) {
+        	Serial.println ("0 is invalid!");
+          	Serial.println ("------------------");
+          	Serial.println ("Goodbye!");
+          	while (true) {}
+        }
+  	}
+  
+    Serial.println("Enter end num");
+	while (Serial.available() == 0); {
+    
+  	 	x = Serial.parseInt();
+      	Serial.print ("end: ");
+      	Serial.println(x); 		
+     	while (Serial.available() > 0) {
+       		junk = Serial.read();
+     	}
+      	
+      	if (x == 0) {
+        	Serial.println ("0 is invalid!");
+          	Serial.println ("------------------");
+          	Serial.println ("Goodbye!");
+          	while (true) {}
+        }
+      
+  	}
+  	
+  	
+  	Serial.println("Output is: ");
+  	Serial.println("   1\t2\t3\t4\t5\t6\t7\t8\t9\t10");
+  
+  	for(c = b; c <= x; c++) {
+    	Serial.print(c);
+      	Serial.print("| ");
+    	
+      for (i = 1; i <= 10; i++) {
+      	Serial.print(i * c);
+        Serial.print("\t");
+      	
+      }
+      	Serial.println();
+    }
+  	digitalWrite(10, HIGH);
+  	digitalWrite(11, HIGH);
+  	digitalWrite(12, HIGH);
+  
+	while(Serial.available() > 0)
+    {
+      Serial.read();
+    }
+    Serial.println ("------------------");
+    Serial.println("Want to try again? 0 for Yes and 1 for No");
+    while (Serial.available() == 0){}
+
+
+    int x = Serial.parseInt();
+    Serial.println ("------------------");
+    if (x == 1) {
+      Serial.println("Goodbye!");
+      while (true) {}
+
+  	} 
+
+
+}

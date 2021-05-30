@@ -1,0 +1,581 @@
+int senhaPc[4];
+int x;
+
+int senhaJg[4];
+int k;
+int i;
+int jogada = 1;
+char junk = ' ';
+
+bool jogoTerminou;
+bool igual[4];
+bool cancelarZero[4];
+bool preferencia[4];
+bool thitiFode[4];
+
+
+int buttonState1 = 0;
+int buttonState2 = 0;
+int buttonState3 = 0;
+int buttonState4 = 0;
+
+int lastButtonState1 = 0;
+int lastButtonState2 = 0;
+int lastButtonState3 = 0;
+int lastButtonState4 = 0;
+
+void setup() {
+  Serial.begin(9600);
+  
+  
+  
+  //led output
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  
+  //input
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+  
+  randomSeed(analogRead(A0));
+  
+  Serial.print("Welcome to the game Mastermind. Discover the password with 4 numbers from 1 to 6.");
+  Serial.println(" ");
+  Serial.print("Tips: "); 
+  Serial.print("0 = correct number.");
+  Serial.println(" ");
+  Serial.print("       1 = correct number and position.");                                                         
+  enter();
+    
+  for (i = 0; i < 4; i++) {
+    senhaPc[i] = random(1, 7);  
+  }
+  
+  Serial.print("Password generated.");
+  enter();
+  jogadaTexto();
+  
+}
+
+void loop() { 
+  
+  
+  buttonState1 = digitalRead(2);
+  buttonState2 = digitalRead(3);
+  buttonState3 = digitalRead(4);
+  buttonState4 = digitalRead(5);
+
+  //1st button
+  if (buttonState1 != lastButtonState1){
+  		if (Serial.available() && k == 0) {
+            senhaJg[0] = Serial.read() - 48;   
+            k++;
+            Serial.print(senhaJg[0]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 1) {
+            senhaJg[1] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[1]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 2) {
+            senhaJg[2] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[2]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 3) {
+            senhaJg[3] = Serial.read() - 48;
+            k = 0;
+            jogada++;
+            Serial.print(senhaJg[3]);
+
+            enter();
+            Serial.print ("Result: ");
+
+            igualFuncao();
+            cancelarZeros();
+            thitiSoFode();
+
+            if (!jogoTerminou) {
+
+              dicaUm0();
+              dicaZero0();
+
+              dicaUm1();
+              dicaZero1();
+
+              dicaUm2();
+              dicaZero2();
+
+              dicaUm3();
+              dicaZero3();
+            }
+
+            if (senhaJg[0] == senhaPc[0] && senhaJg[1] == senhaPc[1] && senhaJg[2] == senhaPc[2] && senhaJg[3] == senhaPc[3]) {
+              enter();
+              Serial.print("Congrats! You've discovered the password!");
+              for (x = 0; x < 4; x++) {
+              Serial.print(senhaPc[x]);
+              Serial.print(" ");
+              jogoTerminou = true;
+              }
+            }
+
+            if (!jogoTerminou) {
+              enter();
+              jogadaTexto();
+            }
+            for (int w = 0; w < 4; w++) {
+              igual[w] = false;
+              cancelarZero[w] = false;
+              preferencia[w] = false;
+          }
+         }
+       	
+	} 
+  
+  else if (buttonState2 != lastButtonState2){
+  		if (Serial.available() && k == 0) {
+            senhaJg[0] = Serial.read() - 48;   
+            k++;
+            Serial.print(senhaJg[0]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 1) {
+            senhaJg[1] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[1]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 2) {
+            senhaJg[2] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[2]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 3) {
+            senhaJg[3] = Serial.read() - 48;
+            k = 0;
+            jogada++;
+            Serial.print(senhaJg[3]);
+
+            enter();
+            Serial.print ("Result: ");
+
+            igualFuncao();
+            cancelarZeros();
+            thitiSoFode();
+
+            if (!jogoTerminou) {
+
+              dicaUm0();
+              dicaZero0();
+
+              dicaUm1();
+              dicaZero1();
+
+              dicaUm2();
+              dicaZero2();
+
+              dicaUm3();
+              dicaZero3();
+            }
+
+            if (senhaJg[0] == senhaPc[0] && senhaJg[1] == senhaPc[1] && senhaJg[2] == senhaPc[2] && senhaJg[3] == senhaPc[3]) {
+              enter();
+              Serial.print("Congrats! You've discovered the password!");
+              for (x = 0; x < 4; x++) {
+              Serial.print(senhaPc[x]);
+              Serial.print(" ");
+              jogoTerminou = true;
+              }
+            }
+
+            if (!jogoTerminou) {
+              enter();
+              jogadaTexto();
+            }
+            for (int w = 0; w < 4; w++) {
+              igual[w] = false;
+              cancelarZero[w] = false;
+              preferencia[w] = false;
+          }
+         }
+       	
+	} 
+  
+  
+  else if (buttonState3 != lastButtonState3){
+  		if (Serial.available() && k == 0) {
+            senhaJg[0] = Serial.read() - 48;   
+            k++;
+            Serial.print(senhaJg[0]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 1) {
+            senhaJg[1] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[1]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 2) {
+            senhaJg[2] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[2]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 3) {
+            senhaJg[3] = Serial.read() - 48;
+            k = 0;
+            jogada++;
+            Serial.print(senhaJg[3]);
+
+            enter();
+            Serial.print ("Result: ");
+
+            igualFuncao();
+            cancelarZeros();
+            thitiSoFode();
+
+            if (!jogoTerminou) {
+
+              dicaUm0();
+              dicaZero0();
+
+              dicaUm1();
+              dicaZero1();
+
+              dicaUm2();
+              dicaZero2();
+
+              dicaUm3();
+              dicaZero3();
+            }
+
+            if (senhaJg[0] == senhaPc[0] && senhaJg[1] == senhaPc[1] && senhaJg[2] == senhaPc[2] && senhaJg[3] == senhaPc[3]) {
+              enter();
+              Serial.print("Congrats! You've discovered the password!");
+              for (x = 0; x < 4; x++) {
+              Serial.print(senhaPc[x]);
+              Serial.print(" ");
+              jogoTerminou = true;
+              }
+            }
+
+            if (!jogoTerminou) {
+              enter();
+              jogadaTexto();
+            }
+            for (int w = 0; w < 4; w++) {
+              igual[w] = false;
+              cancelarZero[w] = false;
+              preferencia[w] = false;
+          }
+         }
+       	
+	} 
+  
+  else if (buttonState4 != lastButtonState4){
+  		if (Serial.available() && k == 0) {
+            senhaJg[0] = Serial.read() - 48;   
+            k++;
+            Serial.print(senhaJg[0]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 1) {
+            senhaJg[1] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[1]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 2) {
+            senhaJg[2] = Serial.read() - 48;
+            k++;
+            Serial.print(senhaJg[2]);
+            Serial.print(" ");
+          }
+
+          if (Serial.available() && k == 3) {
+            senhaJg[3] = Serial.read() - 48;
+            k = 0;
+            jogada++;
+            Serial.print(senhaJg[3]);
+
+            enter();
+            Serial.print ("Result: ");
+
+            igualFuncao();
+            cancelarZeros();
+            thitiSoFode();
+
+            if (!jogoTerminou) {
+
+              dicaUm0();
+              dicaZero0();
+
+              dicaUm1();
+              dicaZero1();
+
+              dicaUm2();
+              dicaZero2();
+
+              dicaUm3();
+              dicaZero3();
+            }
+
+            if (senhaJg[0] == senhaPc[0] && senhaJg[1] == senhaPc[1] && senhaJg[2] == senhaPc[2] && senhaJg[3] == senhaPc[3]) {
+              enter();
+              Serial.print("Congrats! You've discovered the password!");
+              for (x = 0; x < 4; x++) {
+              Serial.print(senhaPc[x]);
+              Serial.print(" ");
+              jogoTerminou = true;
+              }
+            }
+
+            if (!jogoTerminou) {
+              enter();
+              jogadaTexto();
+            }
+            for (int w = 0; w < 4; w++) {
+              igual[w] = false;
+              cancelarZero[w] = false;
+              preferencia[w] = false;
+          }
+         }
+       	
+	} 
+  
+}
+	
+void dicaZero0() {
+  if (senhaJg[0] == senhaPc[0] || senhaJg[0] == senhaPc[1] || senhaJg [0] == senhaPc [2] || senhaJg [0] == senhaPc [3]) {
+  
+    if (senhaJg[0] == senhaJg[1] && senhaJg[0] == senhaJg[2] && senhaJg[0] == senhaJg[3]) {
+      preferencia[0] = true;  
+    } 
+      if (!preferencia[0]) {
+       
+        if ((senhaJg[0] == senhaJg[1] && senhaJg[0] == senhaJg[2]) || (senhaJg[0] == senhaJg[1] && senhaJg[0] == senhaJg[3]) || (senhaJg[0] == senhaJg[2] && senhaJg[0] == senhaJg[3])) {
+          preferencia[1] = true;
+          } 
+        
+          if ((senhaJg[0] == senhaJg[1] && senhaJg[0] == senhaJg[2] && !igual[1] && !igual[2]) || (senhaJg[0] == senhaJg[1] && senhaJg[0] == senhaJg[3] && !igual[1] && !igual[3]) || (senhaJg[0] == senhaJg[2] && senhaJg[0] == senhaJg[3] && !igual[2] && !igual[3])) {
+            if (!thitiFode[0]) {
+               Serial.print("0");
+               Serial.print(" ");  
+            }
+          }
+        
+         if (!thitiFode[0] && !preferencia[1]) {
+           if ((senhaJg[0] == senhaJg[1] && !igual[1]) || (senhaJg[0] == senhaJg[2] && !igual[2]) || (senhaJg[0] == senhaJg[3] && !igual[3])) {
+              Serial.print("0");
+              Serial.print(" ");
+           }
+        }
+     }
+       
+      if (senhaJg[0] != senhaPc[0]) {
+        if (senhaJg[0] != senhaJg[1] && senhaJg[0] != senhaJg[2] && senhaJg[0] != senhaJg[3]) {
+          Serial.print("0");
+          Serial.print(" ");
+        }
+      }
+   }
+}
+      
+void dicaUm0() {
+  if (igual[0]) {
+    Serial.print("1");
+    Serial.print(" ");
+  }
+}
+
+void dicaZero1() {
+  if (senhaJg[1] == senhaPc[0] || senhaJg[1] == senhaPc[1] || senhaJg [1] == senhaPc [2] || senhaJg [1] == senhaPc [3]) {  
+    if (!preferencia[0]) {
+       if ((senhaJg[1] == senhaJg[2] && senhaJg[1] == senhaJg[3])) {
+          preferencia[2] = true;
+            if ((!thitiFode[1]) && (!igual[2] && !igual[3])) {
+              Serial.print("0");
+              Serial.print(" ");
+            }
+       } 
+
+    if (!preferencia[2] && !preferencia[1]) {
+       if (!thitiFode[1]) {
+          if ((senhaJg[1] == senhaJg[2]) || ((senhaJg[1] == senhaJg[3] && (!igual[1] && !igual[3])))) {
+             Serial.print("0");
+             Serial.print(" ");
+          }
+       }
+    }
+    }
+    
+    if (senhaJg[1] != senhaPc[1]) {
+       if (senhaJg[1] != senhaJg[0] && senhaJg[1] != senhaJg[2] && senhaJg[1] != senhaJg[3]) {
+          Serial.print("0");
+          Serial.print(" ");
+       }
+    }
+   }
+}
+
+void dicaUm1() {
+  if (igual[1]) {
+    Serial.print("1");
+    Serial.print(" ");
+  }
+}
+
+void dicaZero2() {
+  if (senhaJg[2] == senhaPc[0] || senhaJg[2] == senhaPc[1] || senhaJg[2] == senhaPc[2] || senhaJg[2] == senhaPc[3]) {  
+    if (!preferencia[0] && !preferencia[1] && !preferencia[2]) {
+       if (!thitiFode[2]) {
+          if ((senhaJg[2] == senhaJg[3]) && (!igual[2] && !igual[3])) {
+             Serial.print("0");
+             Serial.print(" ");
+          }
+       }
+    }
+             
+    if (senhaJg[2] != senhaPc[2]) {   
+       if (senhaJg[2] != senhaJg[0] && senhaJg[2] != senhaJg[1] && senhaJg[2] != senhaJg[3]) {
+          Serial.print("0");
+          Serial.print(" ");
+       }    
+    }
+   }
+}
+    
+void dicaUm2() {
+  if (igual[2]) {
+    Serial.print("1");
+    Serial.print(" ");
+  }
+}
+
+void dicaZero3() {
+  if (senhaJg[3] == senhaPc[0] || senhaJg[3] == senhaPc[1] || senhaJg[3] == senhaPc[2] || senhaJg[3] == senhaPc[3]) {
+    if (!thitiFode[3]) {
+        
+      if (senhaJg[3] != senhaJg[0] && senhaJg[3] != senhaJg[1] && senhaJg[3] != senhaJg[2]) {
+        Serial.print("0");
+        Serial.print(" ");
+      }  
+    }  
+  }
+}
+
+void dicaUm3() {
+  if (igual[3]) {
+    Serial.print("1");
+    Serial.print(" ");
+  }
+}
+
+void enter() {
+    Serial.println(" ");
+    Serial.println(" ");
+}
+
+void jogadaTexto() {
+   if (!jogoTerminou) { 
+    Serial.println("Please turn the switch on before playing!");
+    Serial.print("Play ");
+    Serial.print(jogada);
+    Serial.print(": ");
+    
+  }
+}
+
+void igualFuncao() {
+  if (senhaJg[0] == senhaPc[0]) {
+    igual[0] = true;
+  } 
+  
+  if (senhaJg[1] == senhaPc[1]) {
+    igual[1] = true;
+  } 
+
+    if (senhaJg[2] == senhaPc[2]) {
+    igual[2] = true;
+  } 
+
+    if (senhaJg[3] == senhaPc[3]) {
+    igual[3] = true;
+  } 
+}
+
+void cancelarZeros() {
+  if (senhaPc[0] != senhaPc[1] && senhaPc[0] != senhaPc[2] && senhaPc[0] != senhaPc[3]) {
+    cancelarZero[0] = true;
+  } else {
+    cancelarZero[0] = false;
+  }
+
+  if (senhaPc[1] != senhaPc[0] && senhaPc[1] != senhaPc[2] && senhaPc[1] != senhaPc[3]) {
+    cancelarZero[1] = true;
+  } else {
+    cancelarZero[1] = false;
+  }
+
+  if (senhaPc[2] != senhaPc[0] && senhaPc[2] != senhaPc[1] && senhaPc[2] != senhaPc[3]) {
+    cancelarZero[2] = true;
+  } else {
+    cancelarZero[2] = false;
+  }
+
+  if (senhaPc[3] != senhaPc[0] && senhaPc[3] != senhaPc[1] && senhaPc[3] != senhaPc[2]) {
+    cancelarZero[3] = true;
+  } else {
+    cancelarZero[3] = false;
+  }
+}
+
+void thitiSoFode() {
+  if (cancelarZero[0] && igual[0]) {
+    thitiFode[0] = true;
+  } else {
+    thitiFode[0] = false;
+  }
+ 
+  if (cancelarZero[1] && igual[1]) {
+    thitiFode[1] = true;
+  } else {
+    thitiFode[1] = false;
+  }
+
+  if (cancelarZero[2] && igual[2]) {
+    thitiFode[2] = true;
+  } else {
+    thitiFode[2] = false;
+  }
+  
+  if (cancelarZero[3] && igual[3]) {
+    thitiFode[3] = true;
+  } else {
+    thitiFode[3] = false;
+  }
+}

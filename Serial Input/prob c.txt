@@ -1,0 +1,101 @@
+int length,width;
+char junk = ' ';
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+}
+
+void loop()
+{
+	digitalWrite(10, LOW);
+  	digitalWrite(11, LOW);
+  	digitalWrite(12, LOW);
+
+  	Serial.println("Enter the length");
+  	while (Serial.available() == 0); {
+    
+    	length = Serial.parseInt();
+      	Serial.print ("length: ");
+      	Serial.println(length);
+     	while (Serial.available() > 0) {
+       		junk = Serial.read();
+     	}
+      	if (length == 0) {
+        	Serial.println ("0 is invalid!");
+          	Serial.println ("------------------");
+          	Serial.println ("Goodbye!");
+          	while (true) {}
+        }
+  	}
+  	Serial.println("Enter the width");
+    while (Serial.available() == 0); {
+	
+          width = Serial.parseInt();
+          Serial.print ("length: ");
+          Serial.println(width);
+          while (Serial.available() > 0) {
+              junk = Serial.read();
+          }
+      	  if (width == 0) {
+        	Serial.println ("0 is invalid!");
+          	Serial.println ("------------------");
+          	Serial.println ("Goodbye!");
+          	while (true) {}
+        }
+      	}
+  	Serial.print("*");
+  
+  	for (int i = 0; i < width - 2; i++)
+    {
+        Serial.print("*");
+    }
+  	
+  	Serial.println ("*");
+  
+  	for (int i = 0; i < length - 2; i++) {
+    
+    	Serial.print("*");
+    	for (int j = 0; j < width - 2; j++)
+        {
+        	Serial.print(" ");
+        }
+      
+      	Serial.println ("*");
+    
+    }
+  
+  	Serial.print("*");
+  
+  	for (int i = 0; i < width - 2; i++)
+    {
+    
+    	Serial.print("*");
+    
+    }
+  
+  	Serial.println("*");
+
+	digitalWrite(10, HIGH);
+  	digitalWrite(11, HIGH);
+  	digitalWrite(12, HIGH);
+  
+  	while(Serial.available() > 0)
+    {
+      Serial.read();
+    }
+    Serial.println ("------------------");
+    Serial.println("Want to try again? 0 for Yes and 1 for No");
+    while (Serial.available() == 0){}
+
+
+    int x = Serial.parseInt();
+    Serial.println ("------------------");
+    if (x == 1) {
+      Serial.println("Goodbye!");
+      while (true) {}
+
+  	} 
+}

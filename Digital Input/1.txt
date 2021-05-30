@@ -1,0 +1,212 @@
+int buttonState1 = 0;
+int buttonState2 = 0;
+int buttonState3 = 0;
+int buttonState4 = 0;
+
+int lastButtonState1 = 0;
+int lastButtonState2 = 0;
+int lastButtonState3 = 0;
+int lastButtonState4 = 0;
+
+void setup()
+{
+  Serial.begin(9600);
+  
+  //led output
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  
+  //input
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+}
+
+void loop()
+{
+  
+  buttonState1 = digitalRead(2);
+  buttonState2 = digitalRead(3);
+  buttonState3 = digitalRead(4);
+  buttonState4 = digitalRead(5);
+  
+  
+  //1st button
+  if (buttonState1 != lastButtonState1){
+    
+    if (buttonState1 == HIGH) {
+      digitalWrite(13, HIGH);
+      delay(1000);
+      digitalWrite(11, HIGH);
+      delay(1000);
+      digitalWrite(10, HIGH);
+      delay(1000);
+      digitalWrite(8, HIGH);
+      delay(1000);
+      digitalWrite(6, HIGH);
+    } 
+    else {
+      
+      digitalWrite(13, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(10, LOW);
+      digitalWrite(8, LOW);
+      digitalWrite(6, LOW);
+    }
+  }
+  lastButtonState1 = buttonState1;
+  
+  
+  //2nd button
+  if (buttonState2 != lastButtonState2){
+    
+    if (buttonState2 == HIGH) {
+      	//1st wave
+    	digitalWrite(13, HIGH);
+      	digitalWrite(6, HIGH);
+      	delay(1000);
+      	digitalWrite(12, HIGH);
+      	digitalWrite(7, HIGH);
+      	delay(1000);
+      	digitalWrite(11, HIGH);
+      	digitalWrite(8, HIGH);
+      	delay(1000);
+      	digitalWrite(10, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+      	
+      	//2nd wave
+      
+      	digitalWrite(13, LOW);
+      	digitalWrite(12, LOW);
+        digitalWrite(11, LOW);
+        digitalWrite(10, LOW);
+        digitalWrite(9, LOW);
+        digitalWrite(8, LOW);
+      	digitalWrite(7, LOW);
+        digitalWrite(6, LOW);
+      	
+      	//3rd wave
+      	delay(1000);
+      	digitalWrite(10, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+      	digitalWrite(11, HIGH);
+      	digitalWrite(8, HIGH);
+      	delay(1000);
+      	digitalWrite(12, HIGH);
+      	digitalWrite(7, HIGH);
+      	delay(1000);
+      	digitalWrite(13, HIGH);
+      	digitalWrite(6, HIGH);
+      
+  	} 
+    else {
+      
+      digitalWrite(13, LOW);
+      digitalWrite(12, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(10, LOW);
+      digitalWrite(9, LOW);
+      digitalWrite(8, LOW);
+      digitalWrite(7, LOW);
+      digitalWrite(6, LOW);
+    }
+  }
+  lastButtonState2 = buttonState2;
+  
+  
+  //3rd button
+  if (buttonState3 != lastButtonState3){
+    
+    if (buttonState3 == HIGH) {
+      	delay(1000);
+      	digitalWrite(13, HIGH);
+      	digitalWrite(6, HIGH); 
+      	delay(1000);
+        digitalWrite(12, HIGH);
+      	digitalWrite(7, HIGH);
+      	delay(1000);     
+      	digitalWrite(11, HIGH);
+      	digitalWrite(8, HIGH);
+      	delay(1000);
+      	digitalWrite(10, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+  	} 
+    else {
+      
+      digitalWrite(13, LOW);
+      digitalWrite(12, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(10, LOW);
+      digitalWrite(9, LOW);
+      digitalWrite(8, LOW);
+      digitalWrite(7, LOW);
+      digitalWrite(6, LOW);
+    }
+  }
+  lastButtonState3 = buttonState3;
+  
+  
+  //4th button
+  if (buttonState4 != lastButtonState4){
+    
+    if (buttonState4 == HIGH) {
+      	digitalWrite(13, HIGH);
+    	digitalWrite(11, HIGH);
+      	digitalWrite(9, HIGH);
+      	digitalWrite(7, HIGH);
+      	delay(500);
+      	digitalWrite(13, LOW);
+      	digitalWrite(11, LOW);
+      	digitalWrite(9, LOW);
+      	digitalWrite(7, LOW);
+      	delay(500);
+      	digitalWrite(12, HIGH);
+      	digitalWrite(10, HIGH);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(6, HIGH);
+      	delay(500);
+      	digitalWrite(12, LOW);       
+        digitalWrite(10, LOW);        
+        digitalWrite(8, LOW);        
+        digitalWrite(6, LOW);
+      	delay(1000);
+      	digitalWrite(10, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+      	digitalWrite(13, HIGH);
+      	digitalWrite(6, HIGH);
+      	delay(1000);
+      	digitalWrite(11, HIGH);
+      	digitalWrite(8, HIGH);
+      	delay(1000);
+      	digitalWrite(12, HIGH);
+      	digitalWrite(7, HIGH);
+      	
+  	}
+    else {
+      
+      digitalWrite(13, LOW);
+      digitalWrite(12, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(10, LOW);
+      digitalWrite(9, LOW);
+      digitalWrite(8, LOW);
+      digitalWrite(7, LOW);
+      digitalWrite(6, LOW);
+    }
+  }
+  lastButtonState4 = buttonState4;
+  
+   
+  
+}
